@@ -114,7 +114,13 @@ namespace Proyecto_orange.Controls
         {
             return txtusu.Text;
         }
-        
+
+
+
+        public void cambio_tamaño(int ancho)
+        {
+            usutextbg.Width = ancho;
+        }
         
         
         

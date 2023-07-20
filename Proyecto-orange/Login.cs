@@ -120,12 +120,14 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
        
        
        txtbxPassword = new txtbx(passtextbg,passtextTitleLabel,"Contraseña",textPass,panelder,234,new Point(43,309),"pass",cbshow);
-     /*  passtextbg = new Label();
+       
+       
+       /*  passtextbg = new Label();
        passtextbg.BackColor = Color.FromArgb(186,186,186);
        passtextbg.BorderStyle = BorderStyle.None;
        passtextbg.Location = new Point(43, 309);
        passtextbg.AutoSize = false;
-
+            
        passtextTitleLabel = new Label();
        passtextTitleLabel.Text = "Contraseña:";
        passtextTitleLabel.ForeColor = Color.Gray;
