@@ -1,3 +1,6 @@
+using Proyecto_orange.Controls;
+using Timer = System.Windows.Forms.Timer;
+
 namespace Proyecto_orange;
 
 public partial class Login : Form
@@ -23,7 +26,13 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
     private Label introtxt;
     private bool colorbtn;
     private CheckBox cbshow;
-    
+    private bool isAnimating = false;
+    private int finalX = 500; // Cambia estas coordenadas finales según sea necesario
+    private int finalY = 75;
+    private int animationSteps = 30; // Cantidad de pasos de la animación
+    private int animationDuration; // Duración de la animación en milisegundos
+    private txtbx usu;
+    private txtbx txtbxPassword;
 
 
 //==================================================================================================================
@@ -67,14 +76,13 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
        introtxt.Location = new Point(24, 159);
        introtxt.AutoSize = true;
        panelder.Controls.Add(introtxt);
+      /*
        usutextbg = new Label();
        usutextbg.BackColor = Color.FromArgb(186,186,186);
        usutextbg.BorderStyle = BorderStyle.None;
        usutextbg.Location = new Point(43, 250);
        usutextbg.AutoSize = false;
        
-       
-
        usutextTitleLabel = new Label();
        usutextTitleLabel.Text = "C.I:";
        usutextTitleLabel.ForeColor = Color.Gray;
@@ -98,7 +106,10 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
        usutextbg.Width = 234;
        textUsu.Width = usutextbg.Width;
        panelder.Controls.Add(usutextbg);
+*/
 
+      usu = new txtbx(usutextbg,usutextTitleLabel,"C.I",textUsu,panelder,234,new Point(43,250),"ci");
+      
        cbshow = new CheckBox();
        cbshow.Location = new Point(45, 375);
        cbshow.Text = "Mostrar contraseña";
@@ -108,8 +119,8 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
        panelder.Controls.Add(cbshow);
        
        
-       
-       passtextbg = new Label();
+       txtbxPassword = new txtbx(passtextbg,passtextTitleLabel,"Contraseña",textPass,panelder,234,new Point(43,309),"pass",cbshow);
+     /*  passtextbg = new Label();
        passtextbg.BackColor = Color.FromArgb(186,186,186);
        passtextbg.BorderStyle = BorderStyle.None;
        passtextbg.Location = new Point(43, 309);
@@ -135,13 +146,13 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
        textPass.MaxLength = 32;
        passtextbg.Controls.Add(textPass);
 
-       passtextbg.Height = usutextTitleLabel.Height + textUsu.Height;
+       passtextbg.Height = passtextTitleLabel.Height + textPass.Height;
        passtextbg.Width = 234;
        textPass.Width = passtextbg.Width;
        panelder.Controls.Add(passtextbg);
+*/
 
-
-       btnacc = new PictureBox();
+        btnacc = new PictureBox();
         btnacc.Location = new Point(125, 442);
         btnacc.Size = new Size(49,56);
         btnacc.BackColor = Color.Transparent;
@@ -176,11 +187,6 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
 
 //==================================================================================================================           
 //Aquí se enlazan los eventos de cada item que tenga el form
-        textUsu.KeyPress += textusu_KeyPress;
-        textUsu.Enter += usuFoc;
-        textUsu.Leave += usuLost;
-        textPass.Enter += passFoc;
-        textPass.Leave += passLost;
         btnmin.Click += minimize;
         btnclose.Click += exit;
         btnacc.Click += btnacc_click;
@@ -192,19 +198,109 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
     }
 
     
-    
-    private void cbShow_CheckedChanged(object sender, EventArgs e)
+        private void CalculateAnimationDuration(int startX, int startY, int targetX, int targetY)
+{
+    // Calcula la distancia total en píxeles que debe recorrer el control
+    int distanceX = targetX - startX;
+    int distanceY = targetY - startY;
+    int totalDistance = (int)Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
+
+    // Calcula la velocidad constante en píxeles por paso
+    int speed = totalDistance / animationSteps;
+
+    // Calcula la duración de la animación en milisegundos
+    if (speed == 0)
     {
-        // Verifica el estado del CheckBox
-        if (cbshow.Checked)
+        animationDuration = 0;
+    }
+    else
+    {
+        animationDuration = totalDistance / speed;
+    }
+}
+
+    private void AnimateControl(Control control, Point targetLocation, bool changeDockStyle)
+    {
+        if (!isAnimating)
         {
-            // Muestra el texto ingresado en el TextBox
-            textPass.PasswordChar = '\0'; // Carácter nulo para mostrar el texto sin ocultarlo
+            isAnimating = true;
+            Point originalLocation = control.Location;
+            int stepX = (targetLocation.X - originalLocation.X) / animationSteps;
+            int stepY = (targetLocation.Y - originalLocation.Y) / animationSteps;
+            int stepCount = 0;
+
+            Timer timer = new Timer();
+            timer.Interval = animationDuration / animationSteps;
+            timer.Tick += (sender, e) =>
+            {
+                stepCount++;
+                control.Left = originalLocation.X + stepX * stepCount;
+                control.Top = originalLocation.Y + stepY * stepCount;
+
+                if (stepCount >= animationSteps)
+                {
+                    control.Location = targetLocation; // Establece la posición final
+                    timer.Stop();
+                    isAnimating = false;
+
+                    if (changeDockStyle)
+                    {
+                        // Cambia el DockStyle después de la animación
+                        if (targetLocation.X == 0 && targetLocation.Y == 0)
+                            control.Dock = DockStyle.Left;
+                        else
+                            control.Dock = DockStyle.None;
+                    }
+                }
+            };
+
+            timer.Start();
+        }
+    }
+
+    private void transition(object sender, EventArgs e)
+    {
+        if (panelder.Dock == DockStyle.Left) 
+        {
+            panelder.Dock = DockStyle.None;
+            panelder.Height = 679;
+            panelder.Location = new Point(1, 1);
+            CalculateAnimationDuration(panelder.Left, panelder.Top, 500, 75); // Actualiza la duración antes de cada animación
+            AnimateControl(panelder, new Point(500, 75), false);
+            panelder.Height = 500;
+            panelder.Width = 369;
         }
         else
         {
-            // Oculta el texto ingresado en el TextBox como una contraseña
-            textPass.PasswordChar = '\u25CF'; // Carácter asterisco para ocultar el texto
+            CalculateAnimationDuration(panelder.Left, panelder.Top, 0, 0); // Actualiza la duración antes de cada animación
+            AnimateControl(panelder, new Point(0, 0), true); // Cambia el DockStyle después de la animación
+            panelder.Width = 310;
+            
+            introtxt.Text = "Inicia sesión con tu \ncuenta de Orange";
+            introtxt.Location = new Point(24, 159);
+            usutextbg.Location = new Point(43, 250);
+            usutextbg.Width = 234;
+            cbshow.Location = new Point(45, 375);
+            passtextbg.Location = new Point(43, 309);
+            passtextbg.Width = 234;
+            btnacc.Location = new Point(125, 442);
+            btnacc.Size = new Size(49,56);
+            btnacc.BackgroundImage = Image.FromFile($"{Path.GetFullPath(".").Split("Proyecto-orange")[0]}Proyecto-orange/Proyecto-orange/Resources/boton_no.png");
+            Image logo = Image.FromFile($"{Path.GetFullPath(".").Split("Proyecto-orange")[0]}Proyecto-orange/Proyecto-orange/Resources/logo.png");
+            logoor.BackgroundImage = new Bitmap(logo, 78, 78);
+            logoor.Size = new Size(78, 78);
+
+
+            
+        }
+    }
+    
+    
+    private void cbShow_CheckedChanged(object sender, EventArgs e)
+    {
+        if (txtbxPassword != null && txtbxPassword.CheckBoxPass != null)
+        {
+            txtbxPassword.IsPasswordVisible = txtbxPassword.CheckBoxPass.Checked;
         }
     }
     private void btnacc_click(object sender, EventArgs e)
@@ -219,6 +315,7 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
         }
     }
     
+    /*
     private void textusu_KeyPress(object sender, KeyPressEventArgs e)
     {
         if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -226,77 +323,12 @@ o cambiar algun valor se hace facil desde aquí, en vez de tener que buscar en e
             e.Handled = true; // Cancela el evento para evitar que se agregue el carácter
         }
     }
+    */
     
     
-    private void passFoc(object sender, EventArgs e)
+    private void btnbgc()
     {
-        // Código a ejecutar cuando el TextBox recibe el foco
-        // Por ejemplo, cambiar el color de fondo del TextBox
-        passtextbg.BackColor = Color.White;
-        textPass.BackColor = passtextbg.BackColor;
-        passtextTitleLabel.BackColor = passtextbg.BackColor;
-        passtextbg.BorderStyle = BorderStyle.FixedSingle;
-        
-        if (textUsu.Text != "" && textPass.Text != "")
-        {
-            btnacc.BackgroundImage = Image.FromFile($"{Path.GetFullPath(".").Split("Proyecto-orange")[0]}Proyecto-orange/Proyecto-orange/Resources/boton_si.png");
-            colorbtn = true;
-        }
-        else 
-        {
-            btnacc.BackgroundImage = Image.FromFile($"{Path.GetFullPath(".").Split("Proyecto-orange")[0]}Proyecto-orange/Proyecto-orange/Resources/boton_no.png");
-            colorbtn = false;
-        }
-    }
-    
-    
-    private void passLost(object sender, EventArgs e)
-    {
-        passtextbg.BackColor = Color.FromArgb(186,186,186);
-        textPass.BackColor = passtextbg.BackColor;
-        passtextTitleLabel.BackColor = passtextbg.BackColor;
-        passtextbg.BorderStyle = BorderStyle.None;
-        
-        if (textUsu.Text != "" && textPass.Text != "")
-        {
-            btnacc.BackgroundImage = Image.FromFile($"{Path.GetFullPath(".").Split("Proyecto-orange")[0]}Proyecto-orange/Proyecto-orange/Resources/boton_si.png");
-            colorbtn = true;
-        }
-        else 
-        {
-            btnacc.BackgroundImage = Image.FromFile($"{Path.GetFullPath(".").Split("Proyecto-orange")[0]}Proyecto-orange/Proyecto-orange/Resources/boton_no.png");
-            colorbtn = false;
-        }
-    }
-
-    private void usuFoc(object sender, EventArgs e)
-    {
-        // Código a ejecutar cuando el TextBox recibe el foco
-        // Por ejemplo, cambiar el color de fondo del TextBox
-        usutextbg.BackColor = Color.White;
-        textUsu.BackColor = usutextbg.BackColor;
-        usutextTitleLabel.BackColor = usutextbg.BackColor;
-        usutextbg.BorderStyle = BorderStyle.FixedSingle;
-
-        if (textUsu.Text != "" && textPass.Text != "")
-        {
-            btnacc.BackgroundImage = Image.FromFile($"{Path.GetFullPath(".").Split("Proyecto-orange")[0]}Proyecto-orange/Proyecto-orange/Resources/boton_si.png");
-            colorbtn = true;
-        }
-        else 
-        {
-            btnacc.BackgroundImage = Image.FromFile($"{Path.GetFullPath(".").Split("Proyecto-orange")[0]}Proyecto-orange/Proyecto-orange/Resources/boton_no.png");
-            colorbtn = false;
-        }
-    }
-
-    private void usuLost(object sender, EventArgs e)
-    {
-        usutextbg.BackColor = Color.FromArgb(186,186,186);
-        textUsu.BackColor = usutextbg.BackColor;
-        usutextTitleLabel.BackColor = usutextbg.BackColor;
-        usutextbg.BorderStyle = BorderStyle.None;
-        if (textUsu.Text != "" && textPass.Text != "")
+        if (usu.txtleave() != "" && textPass.Text != "")
         {
             btnacc.BackgroundImage = Image.FromFile($"{Path.GetFullPath(".").Split("Proyecto-orange")[0]}Proyecto-orange/Proyecto-orange/Resources/boton_si.png");
         }

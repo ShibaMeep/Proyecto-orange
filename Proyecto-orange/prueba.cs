@@ -30,24 +30,30 @@ private Point originalLocation; // Coordenadas originales del control
         ola.Width = 250;
         Controls.Add(ola);
         ola.Click += button1_Click;
-        CalculateAnimationDuration();
     }
 
-    private void CalculateAnimationDuration()
+    private void CalculateAnimationDuration(int startX, int startY, int targetX, int targetY)
+{
+    // Calcula la distancia total en píxeles que debe recorrer el control
+    int distanceX = targetX - startX;
+    int distanceY = targetY - startY;
+    int totalDistance = (int)Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
+
+    // Calcula la velocidad constante en píxeles por paso
+    int speed = totalDistance / animationSteps;
+
+    // Calcula la duración de la animación en milisegundos
+    if (speed == 0)
     {
-        // Calcula la distancia total en píxeles que debe recorrer el control
-        int distanceX = finalX - ola.Left;
-        int distanceY = finalY - ola.Top;
-        int totalDistance = (int)Math.Sqrt(distanceX * distanceX + distanceY * distanceY);
-
-        // Calcula la velocidad constante en píxeles por paso
-        int speed = totalDistance / animationSteps;
-
-        // Calcula la duración de la animación en milisegundos
+        animationDuration = 0;
+    }
+    else
+    {
         animationDuration = totalDistance / speed;
     }
+}
 
-    private void AnimateControl(Control control, Point targetLocation)
+    private void AnimateControl(Control control, Point targetLocation, bool changeDockStyle)
     {
         if (!isAnimating)
         {
@@ -70,33 +76,40 @@ private Point originalLocation; // Coordenadas originales del control
                     control.Location = targetLocation; // Establece la posición final
                     timer.Stop();
                     isAnimating = false;
+
+                    if (changeDockStyle)
+                    {
+                        // Cambia el DockStyle después de la animación
+                        if (targetLocation.X == 0 && targetLocation.Y == 0)
+                            control.Dock = DockStyle.Left;
+                        else
+                            control.Dock = DockStyle.None;
+                    }
                 }
             };
 
             timer.Start();
         }
     }
+
     private void button1_Click(object sender, EventArgs e)
     {
-
-        if (ola.Location == originalLocation) 
+        if (ola.Dock == DockStyle.Left) 
         {
             ola.Dock = DockStyle.None;
             ola.Height = 679;
-            ola.Location = new Point(0, 0);
-            CalculateAnimationDuration(); // Actualiza la duración antes de cada animación
-            AnimateControl(ola, new Point(finalX,finalY));
+            ola.Location = new Point(1, 1);
+            CalculateAnimationDuration(ola.Left, ola.Top, 500, 75); // Actualiza la duración antes de cada animación
+            AnimateControl(ola, new Point(500, 75), false);
             ola.Height = 500;
             ola.Width = 369;
         }
         else
         {
-            CalculateAnimationDuration(); // Actualiza la duración antes de cada animación
-            AnimateControl(ola, originalLocation);
-            ola.Dock = DockStyle.Left;
+            CalculateAnimationDuration(ola.Left, ola.Top, 0, 0); // Actualiza la duración antes de cada animación
+            AnimateControl(ola, new Point(0, 0), true); // Cambia el DockStyle después de la animación
             ola.Width = 250;
-            
         }
-       
     }
+
 }
