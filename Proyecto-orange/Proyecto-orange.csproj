@@ -16,6 +16,12 @@
       <Compile Update="Controls\txtbx.cs">
         <SubType>UserControl</SubType>
       </Compile>
+      <Compile Update="Controls\tglbtn.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Controls\RoundedPanel.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>

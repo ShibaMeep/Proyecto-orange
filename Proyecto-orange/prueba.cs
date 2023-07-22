@@ -1,4 +1,5 @@
 using System.Windows.Forms;
+using Proyecto_orange.Controls;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Proyecto_orange;
@@ -13,7 +14,8 @@ private int finalY = 75;
 private int animationSteps = 30; // Cantidad de pasos de la animación
 private int animationDuration; // Duración de la animación en milisegundos
 private Point originalLocation; // Coordenadas originales del control
-
+private tglbtn hola;
+    
     public prueba()
     {
         
@@ -23,13 +25,28 @@ private Point originalLocation; // Coordenadas originales del control
         Height = 680;
         Width = 1024;
 
+        
+        RoundedPanel saludos = new RoundedPanel();
+        saludos.BackColor = Color.DarkGray;
+        saludos.Location = new Point(300,300);
+        saludos. Size = new Size(90,40); 
+        Controls.Add(saludos);
+
+       
+        
+        hola = new tglbtn();
+        hola.Location = new Point(0,0 );
+        hola.Dock = DockStyle.Left;
+        hola.Width = saludos.Width / 2;
+        saludos.Controls.Add(hola);
+
         ola = new Button();
         ola.Location = new Point(0, 0);
         originalLocation = new Point(0, 0);
         ola.Dock = DockStyle.Left;
         ola.Width = 250;
         Controls.Add(ola);
-        ola.Click += button1_Click;
+        hola.Click += button1_Click;
     }
 
     private void CalculateAnimationDuration(int startX, int startY, int targetX, int targetY)
@@ -94,7 +111,7 @@ private Point originalLocation; // Coordenadas originales del control
 
     private void button1_Click(object sender, EventArgs e)
     {
-        if (ola.Dock == DockStyle.Left) 
+        if (ola.Dock == DockStyle.Left)
         {
             ola.Dock = DockStyle.None;
             ola.Height = 679;
@@ -109,6 +126,15 @@ private Point originalLocation; // Coordenadas originales del control
             CalculateAnimationDuration(ola.Left, ola.Top, 0, 0); // Actualiza la duración antes de cada animación
             AnimateControl(ola, new Point(0, 0), true); // Cambia el DockStyle después de la animación
             ola.Width = 250;
+        }
+
+        if (hola.Dock == DockStyle.Left)
+        {
+            hola.Dock = DockStyle.Right;
+        }
+        else
+        {
+            hola.Dock = DockStyle.Left;
         }
     }
 
