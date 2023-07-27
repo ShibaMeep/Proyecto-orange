@@ -1,0 +1,110 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0-windows7.0": {
+      "Negocio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Persistencia": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Negocio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Negocio.dll": {}
+        }
+      },
+      "Persistencia/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Persistencia.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Persistencia.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Negocio/1.0.0": {
+      "type": "project",
+      "path": "../Negocio/Negocio.csproj",
+      "msbuildProject": "../Negocio/Negocio.csproj"
+    },
+    "Persistencia/1.0.0": {
+      "type": "project",
+      "path": "../Persistencia/Persistencia.csproj",
+      "msbuildProject": "../Persistencia/Persistencia.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0-windows7.0": [
+      "Negocio >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\fanta\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\fanta\\OneDrive\\Escritorio\\Proyecto-orange\\Presentación\\Presentación.csproj",
+      "projectName": "Presentación",
+      "projectPath": "C:\\Users\\fanta\\OneDrive\\Escritorio\\Proyecto-orange\\Presentación\\Presentación.csproj",
+      "packagesPath": "C:\\Users\\fanta\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\fanta\\OneDrive\\Escritorio\\Proyecto-orange\\Presentación\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\fanta\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0-windows"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
+          "projectReferences": {
+            "C:\\Users\\fanta\\OneDrive\\Escritorio\\Proyecto-orange\\Negocio\\Negocio.csproj": {
+              "projectPath": "C:\\Users\\fanta\\OneDrive\\Escritorio\\Proyecto-orange\\Negocio\\Negocio.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0-windows7.0": {
+        "targetAlias": "net7.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

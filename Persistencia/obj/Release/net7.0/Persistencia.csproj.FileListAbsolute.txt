@@ -1,0 +1,12 @@
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\bin\Release\net7.0\Persistencia.deps.json
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\bin\Release\net7.0\Persistencia.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\bin\Release\net7.0\Persistencia.pdb
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\obj\Release\net7.0\Persistencia.csproj.AssemblyReference.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\obj\Release\net7.0\Persistencia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\obj\Release\net7.0\Persistencia.AssemblyInfoInputs.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\obj\Release\net7.0\Persistencia.AssemblyInfo.cs
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\obj\Release\net7.0\Persistencia.csproj.CoreCompileInputs.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\obj\Release\net7.0\Persistencia.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\obj\Release\net7.0\refint\Persistencia.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\obj\Release\net7.0\Persistencia.pdb
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Persistencia\obj\Release\net7.0\ref\Persistencia.dll

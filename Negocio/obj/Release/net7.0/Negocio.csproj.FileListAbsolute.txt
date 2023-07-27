@@ -1,0 +1,15 @@
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\bin\Release\net7.0\Negocio.deps.json
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\bin\Release\net7.0\Negocio.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\bin\Release\net7.0\Negocio.pdb
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\bin\Release\net7.0\Persistencia.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\bin\Release\net7.0\Persistencia.pdb
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\Negocio.csproj.AssemblyReference.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\Negocio.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\Negocio.AssemblyInfoInputs.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\Negocio.AssemblyInfo.cs
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\Negocio.csproj.CopyComplete
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\Negocio.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\refint\Negocio.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\Negocio.pdb
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Negocio\obj\Release\net7.0\ref\Negocio.dll

@@ -1,0 +1,15 @@
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\bin\Release\net7.0-windows\Proyecto-orange.exe
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\bin\Release\net7.0-windows\Proyecto-orange.deps.json
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\bin\Release\net7.0-windows\Proyecto-orange.runtimeconfig.json
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\bin\Release\net7.0-windows\Proyecto-orange.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\bin\Release\net7.0-windows\Proyecto-orange.pdb
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\Proyecto-orange.csproj.AssemblyReference.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\Proyecto-orange.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\Proyecto-orange.AssemblyInfoInputs.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\Proyecto-orange.AssemblyInfo.cs
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\Proyecto-orange.csproj.CoreCompileInputs.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\Proyecto-orange.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\refint\Proyecto-orange.dll
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\Proyecto-orange.pdb
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\Proyecto-orange.genruntimeconfig.cache
+C:\Users\fanta\OneDrive\Escritorio\Proyecto-orange\Proyecto-orange\obj\Release\net7.0-windows\ref\Proyecto-orange.dll

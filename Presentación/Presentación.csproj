@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <RootNamespace>Proyecto_orange</RootNamespace>
+        <Nullable>enable</Nullable>
+        <UseWindowsForms>true</UseWindowsForms>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Update="prueba.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="Controls\txtbx.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Controls\tglbtn.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+      <Compile Update="Controls\RoundedPanel.cs">
+        <SubType>UserControl</SubType>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Negocio\Negocio.csproj" />
+    </ItemGroup>
+
+</Project>
